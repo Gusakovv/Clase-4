@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Урок 4 · Кто что делает?</title>
+<style>
+:root{--ink:#182038;--bg:#f3f5fb;--card:#fff;--box:#dfe4f7;--bd:#b9c3ea;--p:#3d4fa8;--ok:#1f7a3a;--bad:#b3261e;--mut:#5a6382}
+@media(prefers-color-scheme:dark){:root{--ink:#e8ebf7;--bg:#12172b;--card:#1b2240;--box:#27305a;--bd:#3d4a86;--p:#9fb0ff;--ok:#6fd08c;--bad:#ff8a80;--mut:#a3acd0}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font:17px/1.55 "Segoe UI","Noto Sans","PT Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:28px 16px 12px;max-width:900px;margin:auto}
+h1{font-size:2rem;margin:0}h1 small{display:block;font-size:1rem;font-weight:400;color:var(--mut)}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:6px 10px;display:flex;gap:6px;overflow-x:auto}
+nav a{white-space:nowrap;padding:6px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:.9rem}
+nav a:hover{background:var(--box)}
+#pg{height:5px;background:var(--box)}#pgb{height:5px;width:0;background:var(--p);transition:width .3s}
+main{max-width:900px;margin:auto;padding:0 12px 60px}
+section{margin:34px 0}h2{font-size:1.45rem;border-left:6px solid var(--p);padding-left:10px}
+h3{font-size:1.1rem;margin:.2rem 0}
+.card,.ex,.orig{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin:12px 0}
+.ex{border-left:6px solid var(--p)}
+.box{background:var(--box);padding:10px 14px;margin:10px 0;border-left:8px solid var(--bd);border-right:8px solid var(--bd)}
+.tag{font-size:.75rem;background:var(--p);color:#fff;border-radius:5px;padding:1px 7px;margin-right:6px;font-weight:600}
+@media(prefers-color-scheme:dark){.tag{color:#12172b}}
+.tag.add{background:#8a5a00;color:#fff}
+.pg{float:right;color:var(--mut);font-size:.8rem}
+.ru{font-size:1.1rem}.mut{color:var(--mut)}.mod{color:var(--p)}
+table{border-collapse:collapse;width:100%}td,th{padding:5px 8px;text-align:left;vertical-align:middle}
+.t td,.t th{border-bottom:1px solid var(--bd)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+input,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:3px 6px;max-width:100%}
+input.ok,select.ok{border-color:var(--ok);background:rgba(31,122,58,.15)}
+input.bad,select.bad{border-color:var(--bad);background:rgba(179,38,30,.15)}
+button{font:inherit;cursor:pointer;border:1px solid var(--p);background:var(--p);color:#fff;border-radius:8px;padding:6px 12px;margin:4px 6px 4px 0}
+@media(prefers-color-scheme:dark){button{color:#12172b}}
+button.sec,button.sp{background:transparent;color:var(--p)}button.sp{padding:0 6px;margin:0 4px;border-radius:6px}
+:focus-visible{outline:3px solid #f59f00;outline-offset:2px}
+.res{margin-top:6px;min-height:1.4em}
+.ins{margin:.3rem 0}
+details.add{border:1px dashed #b07a1a;border-radius:8px;padding:6px 10px;margin:10px 0}
+details.add summary{cursor:pointer;color:#8a5a00;font-weight:600}
+@media(prefers-color-scheme:dark){details.add summary{color:#ffc766}}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.pic{text-align:center;border:1px solid var(--bd);border-radius:10px;padding:8px;background:var(--card)}
+.em{font-size:2.6rem;line-height:1.2}
+.cw td{padding:0}.cw td.c{border:1px solid var(--ink);width:28px;height:28px}
+.cw input,.cw b{width:100%;height:100%;display:block;text-align:center;text-transform:uppercase;border:0;border-radius:0;padding:0;font:600 1rem/26px inherit;background:transparent}
+.cw b{background:var(--box)}.cw .scr{overflow-x:auto}
+.fc{text-align:center;padding:22px 10px;cursor:pointer;min-height:130px}
+.fc .w{font-size:2rem}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px}
+.vg div{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px 10px}
+.q{margin:8px 0}
+.sw{overflow-x:auto}
+</style></head><body>
+<header><h1>Урок 4 · КТО ЧТО ДЕЛАЕТ?<small>Compañero interactivo del manual de ruso (A1). Contenido original en ruso; explicaciones en español.</small></h1>
+<p><span class="tag">Libro</span> = material original del manual. <span class="tag add">Adicional</span> = apoyo en español que no está en el libro.</p></header>
+<div id="pg"><div id="pgb"></div></div>
+<nav aria-label="Secciones"><a href="#s1">1 Где вы работаете?</a><a href="#s2">2 Что вы читаете?</a><a href="#sV">Palabras nuevas</a><a href="#sY">Вы уже знаете, как…</a><a href="#sG">Грамматика</a><a href="#sR">Repaso</a></nav>
+<main id="app"></main>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const norm=s=>s.normalize('NFD').replace(/\u0301/g,'').normalize('NFC').toLowerCase().replace(/ё/g,'е').replace(/[.,!?¿¡"«»;:–—-]/g,'').replace(/\s+/g,' ').trim();
+let S={sc:{},bad:{}};try{S=JSON.parse(localStorage.getItem('l4')||'')||S}catch(e){}
+const save=()=>{try{localStorage.setItem('l4',JSON.stringify(S))}catch(e){}};
+function speak(t){if(!('speechSynthesis' in window)){alert('Tu navegador no tiene voz sintética. Usa la guía escrita.');return}
+const u=new SpeechSynthesisUtterance(t);u.lang='ru-RU';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}
+const sp=t=>`<button class="sp" data-t="${t.replace(/\u0301/g,'')}" aria-label="Escuchar (voz sintética)">🔊</button>`;
+const I=(a,w)=>`<input data-a="${a}" size="${w||12}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Respuesta">`;
+const SEL=(a,o)=>`<select data-a="${a}" aria-label="Elige"><option value="">…</option>${o.map(x=>`<option>${x}</option>`).join('')}</select>`;
+const F=(t,a,w)=>{let i=0;return t.replace(/___/g,()=>I(a[i++],w))};
+const FS=(t,a,o)=>{let i=0;return t.replace(/___/g,()=>SEL(a[i++],o))};
+const EX=(id,name,ins,body,exp,pg)=>`<div class="ex" id="ex${id}" data-id="${id}"><h3>${id=='gq'||id=='fin'?'<span class="tag add">Adicional</span>':'<span class="tag">Libro</span>'}${name}<span class="pg">${pg||''}</span></h3><p class="ins">${ins}</p>${body}<div class="bar"><button data-act="chk">Comprobar</button><button data-act="show" class="sec">Ver respuesta sugerida</button><button data-act="rst" class="sec">Reintentar</button></div><div class="res" role="status" aria-live="polite" data-exp="${exp||''}"></div></div>`;
+const ADD=(h,t)=>`<details class="add"><summary>${t||'Explicación adicional'}</summary>${h}</details>`;
+const CONJ=(n,f)=>`<div class="box"><h3 class="ru">${n}</h3><div class="two"><div>я ${f[0]}<br>ты ${f[1]}<br>он (она́) ${f[2]}</div><div>мы ${f[3]}<br>вы ${f[4]}<br>они́ ${f[5]}</div></div></div>`;
+const rw=(s,e)=>(a=>a.map((x,i)=>x+'<b>'+e[i]+'</b>'))(s);
+const sec=(id,t,h)=>`<section id="${id}"><h2>${t}</h2>${h}</section>`;
+
+/* ---- Vocabulario (págs. 60-61) ---- */
+const V=[["а","y, pero (conjunción adversativa)"],["библиоте́ка","biblioteca"],["больни́ца","hospital"],["восемна́дцать","dieciocho"],["гости́ница","hotel"],["гуля́ть (-ю, -ешь, ...-ют)","pasear"],["да́ча","casa de campo"],["два́дцать","veinte"],["двена́дцать","doce"],["девятна́дцать","diecinueve"],["де́лать (-ю, -ешь, ...-ют)","hacer"],["дискоте́ка","discoteca"],["жёлтый (-ая, -ое)","amarillo"],["жить (живу́, живёшь, ...живу́т)","vivir"],["заво́д","fábrica"],["зелёный (-ая, -ое)","verde"],["зна́ть (-ю, -ешь, ...-ют)","saber, conocer"],["и","y (conjunción copulativa)"],["кра́сный (-ая, -ое)","rojo"],["лаборато́рия","laboratorio"],["ле́кция","conferencia"],["магази́н","tienda"],["матрёшка","muñeca rusa (de madera)"],["ми́нус","menos (signo matemático)"],["молодо́й челове́к","joven (n.)"],["му́зыка","música"],["но́мер","habitación de un hotel"],["оди́ннадцать","once"],["о́пера","ópera"],["отдыха́ть (-ю, -ешь, ...-ют)","descansar"],["откры́тка","postal"],["па́спорт","pasaporte"],["писа́ть (пишу́, пи́шешь, ...пи́шут)","escribir"],["плюс","más (signo matemático)"],["пляж","playa"],["по́чта","correos"],["проспе́кт","avenida"],["пятна́дцать","quince"],["рабо́та","trabajo"],["рабо́тать (-ю, -ешь, ...-ют)","trabajar"],["рестора́н","restaurante"],["сейча́с","ahora"],["семна́дцать","diecisiete"],["симпати́чный (-ая, -ое)","simpático, atractivo"],["си́ний (-яя, -ее)","azul"],["слу́шать (-ю, -ешь, ...-ют)","escuchar"],["трина́дцать","trece"],["университе́т","universidad"],["фа́брика","fábrica"],["фи́рма","empresa"],["четы́рнадцать","catorce"],["чёрный (-ая, -ое)","negro"],["чита́ть (-ю, -ешь, ...-ют)","leer"],["шестна́дцать","dieciséis"]];
+const EM={"библиоте́ка":"📚","больни́ца":"🏥","гости́ница":"🏨","гуля́ть (-ю, -ешь, ...-ют)":"🚶","да́ча":"🏡","дискоте́ка":"🪩","жёлтый (-ая, -ое)":"🟨","заво́д":"🏭","зелёный (-ая, -ое)":"🟩","кра́сный (-ая, -ое)":"🟥","лаборато́рия":"🔬","магази́н":"🏪","матрёшка":"🪆","му́зыка":"🎵","о́пера":"🎭","откры́тка":"💌","па́спорт":"🛂","пляж":"🏖️","по́чта":"📮","рестора́н":"🍽️","си́ний (-яя, -ее)":"🟦","слу́шать (-ю, -ешь, ...-ют)":"🎧","университе́т":"🎓","фа́брика":"🏭","чёрный (-ая, -ое)":"⬛","чита́ть (-ю, -ешь, ...-ют)":"📖","писа́ть (пишу́, пи́шешь, ...пи́шут)":"✍️","рабо́тать (-ю, -ешь, ...-ют)":"💼","отдыха́ть (-ю, -ешь, ...-ют)":"🛋️","проспе́кт":"🛣️"};
+const head=w=>w.replace(/ \(.*/,'');
+
+/* ---- Crucigrama ---- */
+const W=[['университет',5,0,'a'],['музей',4,0,'d'],['больница',0,2,'d'],['лаборатория',1,5,'d'],['фабрика',1,7,'d'],['почта',2,10,'d'],['порт',3,9,'a'],['магазин',10,0,'a'],['завод',9,1,'d']];
+const G={};W.forEach(([w,r,c,d])=>[...w].forEach((h,k)=>G[(d=='a'?r:r+k)+','+(d=='a'?c+k:c)]=h));
+const GV=['0,2','2,2','4,0','1,5','3,5','1,7','3,7','2,10','3,9','9,1','10,0','10,5','10,6'];for(let c=0;c<11;c++)GV.push('5,'+c);
+function cross(){let h='<div class="scr"><table class="cw" role="grid">';for(let r=0;r<14;r++){h+='<tr>';for(let c=0;c<13;c++){const k=r+','+c,l=G[k];h+=!l?'<td></td>':'<td class="c">'+(GV.includes(k)?'<b>'+l+'</b>':`<input maxlength="1" data-a="${l}" aria-label="fila ${r+1} columna ${c+1}">`)+'</td>'}h+='</tr>'}return h+'</table></div>'}
+
+/* ---- Contenido ---- */
+const A=[];
+A.push(sec('s1','1 · Где вы рабо́таете?',
+`<div class="orig"><span class="pg">p. 51</span><p class="ru"><span class="tag">Libro</span>Моя́ подру́га Та́ня рабо́тает.<br><b>Сейча́с</b> она́ на рабо́те. Она́ рабо́тает в библиоте́ке. ${sp('Моя подруга Таня работает. Сейчас она на работе. Она работает в библиотеке.')}</p>
+${ADD('<p>«Mi amiga Tania trabaja. Ahora está en el trabajo. Ella trabaja en una biblioteca.»</p>','Traducción (adicional)')}</div>
+<div class="two">${CONJ('рабо́тать',rw(['рабо́та','рабо́та','рабо́та','рабо́та','рабо́та','рабо́та'],['ю','ешь','ет','ем','ете','ют']))}
+<div class="box ru"><table><tr><td>магази́н</td><td>в магази́н<b>е</b></td></tr><tr><td>музе́й</td><td>в музе́<b>е</b></td></tr><tr><td>больни́ца</td><td>в больни́ц<b>е</b></td></tr><tr><td>лаборато́рия</td><td>в лаборато́р<b>ии</b></td></tr><tr><td>порт</td><td>в порт<b>у́</b></td></tr><tr><td>по́чта</td><td>на по́чт<b>е</b></td></tr><tr><td>заво́д</td><td>на заво́д<b>е</b></td></tr><tr><td>фа́брика</td><td>на фа́брик<b>е</b></td></tr></table></div></div>
+${ADD('<p><b>Presente (1.ª conjugación):</b> como en español, el verbo cambia según la persona: <i>trabajo, trabajas, trabaja…</i> En ruso se cambia la terminación: -ю, -ешь, -ет, -ем, -ете, -ют. <b>Error típico:</b> decir «я работает». Con <b>я</b> siempre -ю.</p><p><b>¿Dónde?</b> Después de <b>в</b> o <b>на</b> el lugar cambia su final (магазин → в магази́не). Fíjate en cuál lleva <b>в</b> y cuál <b>на</b> en el recuadro; hay que aprenderlo con cada palabra.</p><p><b>Pronunciación:</b> la sílaba con tilde (´) es la fuerte; las vocales sin tilde se debilitan (о suena casi como «a»: рабо́та ≈ «rabóta»). Usa 🔊 para oír una voz sintética (no es perfecta).</p>')}
+${EX('11','1.1 Упражне́ние.','Образе́ц: (Modelo:) <span class="mod">– Све́та, где ты рабо́таешь? – Я рабо́таю в университе́те.</span><br>Мари́я Па́вловна - магази́н, Никола́й - лаборато́рия, Со́ня - музе́й, Ната́ша - по́чта, Хуа́н - заво́д, А́нна - больни́ца, Серге́й - порт<br><span class="mut">Escribe la respuesta (con в/на + lugar).</span>',
+[['Мари́я Па́вловна – магази́н','в магазине'],['Никола́й – лаборато́рия','в лаборатории'],['Со́ня – музе́й','в музее'],['Ната́ша – по́чта','на почте'],['Хуа́н – заво́д','на заводе'],['А́нна – больни́ца','в больнице'],['Серге́й – порт','в порту']].map(x=>`<div class="q"><span class="ru">${x[0]}: Я рабо́таю ${I(x[1],12)}.</span></div>`).join(''),
+'Respuestas sugeridas (derivadas de las tablas del libro).','p. 51')}
+${EX('cw','Кроссво́рд','(Crucigrama. En este crucigrama aparecen los nombres de 9 lugares) <span class="mut">El libro no trae pistas: las palabras son los 9 lugares de las tablas y del crucigrama.</span>',cross(),'Respuesta sugerida: университет, музей, больница, лаборатория, фабрика, почта, порт, магазин, завод.','p. 51')}
+${EX('12','1.2 Упражне́ние.','(Rellene la tabla)',(()=>{const v=[['де́лать',['де́лаю','де́лаешь','де́лает','де́лаем','де́лаете','де́лают'],[0,2,4]],['гуля́ть',['гуля́ю','гуля́ешь','гуля́ет','гуля́ем','гуля́ете','гуля́ют'],[1]],['отдыха́ть',['отдыха́ю','отдыха́ешь','отдыха́ет','отдыха́ем','отдыха́ете','отдыха́ют'],[4]],['писа́ть',['пишу́','пи́шешь','пи́шет','пи́шем','пи́шете','пи́шут'],[0,1,3,5]]];const p=['я','ты','он, она́','мы','вы','они́'];let h='<div class="sw"><table class="t ru"><tr><th></th>'+v.map(x=>'<th>'+x[0]+'</th>').join('')+'</tr>';p.forEach((q,i)=>{h+='<tr><td>'+q+'</td>'+v.map(x=>'<td>'+(x[2].includes(i)?'<b>'+x[1][i]+'</b>':I(x[1][i],9))+'</td>').join('')+'</tr>'});return h+'</table></div>'})(),'Las formas en negrita ya vienen dadas en el libro.','p. 52')}
+<div class="ex" id="ex13x"><h3><span class="tag">Libro</span>1.3 Упражне́ние.<span class="pg">p. 52</span></h3><p class="ins">(Pregunte a su compañero de clase sobre los dibujos)<br>Образе́ц: (Modelo:) <span class="mod">– Анто́н гуля́ет? – Нет, он не гуля́ет. – А что он де́лает? – Он чита́ет.</span></p>
+<div class="pics">${[['📖','Анто́н <b>чита́ет</b>.'],['📻','-Что ты <b>де́лаешь</b>? -Я <b>слу́шаю</b> ра́дио.'],['👴🧒','Де́душка и внук <b>гуля́ют</b>.'],['🏡','<b>да́ча</b><br>Мы <b>отдыха́ем</b> на да́че.'],['✍️✍️','Макси́м и Ко́ля <b>пи́шут</b>.']].map((p,i)=>`<div class="pic"><div class="em" aria-hidden="true">${p[0]}</div><button class="sec" data-act="cap">${i?'Ver respuesta del libro':'Ver el modelo'}</button><div class="ru" hidden>${p[1]}</div></div>`).join('')}</div>
+<p class="mut">Práctica adicional: pregunta en voz alta «Что он/она́ де́лает?» antes de pulsar el botón. Los dibujos originales se sustituyen aquí por iconos.</p></div>`));
+
+A.push(sec('s2','2 · Что вы чита́ете?',
+`<div class="orig"><span class="pg">p. 53</span><p class="ru"><span class="tag">Libro</span>– Кто э́то?<br>– Э́то Ни́на.<br>– Где она́ сейча́с?<br>– До́ма.<br>– А что она́ де́лает?<br>– Чита́ет. ${sp('Кто это? Это Нина. Где она сейчас? Дома. А что она делает? Читает.')}</p>
+<p style="text-align:center;font-size:3rem" aria-hidden="true">📰</p>
+${ADD('<p>«¿Quién es? – Es Nina. – ¿Dónde está ahora? – En casa. – ¿Y qué hace? – Lee.»</p>','Traducción (adicional)')}</div>
+<div class="box ru"><b>Что</b> чита́ет Ни́на?<br>Она́ чита́ет: журна́л. (журна́л) · газе́т<b>у</b>. (газе́та) · письмо́. (письмо́)</div>
+${EX('21','2.1 Упражне́ние.','Образе́ц: (Modelo:) <span class="mod">– Что де́лает А́нна? – Она́ слу́шает <i>му́зыку</i>.</span><br><i>му́зыка</i>, журна́л, о́пера, упражне́ние, ле́кция, газе́та, письмо́<br><span class="mut">Escribe la palabra en acusativo (газета → газету, музыка → музыку).</span>',
+`<div class="two ru"><div>
+<p class="q">а).– Ли́да чита́ет?<br>– Нет, она́ пи́шет.<br>– Что она́ пи́шет?<br>– Она́ пи́шет ${I('письмо|упражнение',12)}.</p>
+<p class="q">в).– Где сейча́с Серге́й?<br>– Он в университе́те.<br>Он слу́шает ${I('лекцию',12)}.</p>
+<p class="q">д).– Где сейча́с Ива́н Петро́вич?<br>– Он сейча́с в теа́тре.<br>Он слу́шает ${I('оперу|музыку',12)}.</p></div><div>
+<p class="q">б).– Что де́лает де́душка?<br>– Он чита́ет ${I('газету|журнал|письмо',12)}.</p>
+<p class="q">г).– Что вы де́лаете?<br>– Я чита́ю, а моя́ сестра́ пи́шет.<br>– Что ты чита́ешь?<br>– Я чита́ю ${I('газету|журнал',12)}.<br>– А что пи́шет твоя́ сестра́?<br>– Она́ пи́шет ${I('письмо|упражнение',12)}.</p></div></div>`,
+'Respuestas sugeridas; varias opciones pueden ser correctas. Recuerda: газета → газету; музыка → музыку; лекция → лекцию; опера → оперу.','p. 53')}
+${ADD('<p><b>Complemento directo:</b> en español dices «leo el periódico» sin cambiar la palabra. En ruso, las palabras femeninas en -а cambian a <b>-у</b> (газета → газету). Masculinos y neutros (журнал, письмо) no cambian. <b>Error típico:</b> «я читаю газета».</p>')}
+<div class="orig"><span class="pg">p. 54</span><h3><span class="tag">Libro</span>2.2 Зада́ние. Слу́шайте и чита́йте. (Escuche y lea)</h3>
+<p class="mut">El libro trae audio; aquí no está incluido. Puedes usar la voz sintética 🔊 (no reproduce perfectamente la pronunciación nativa).</p>
+<p class="ru" style="text-align:center;font-size:2.4rem" aria-hidden="true">🚪</p>
+<p class="ru">Э́то наш дом.<br>Я живу́ в кварти́ре №3, а моя́ подру́га Ле́на живёт в кварти́ре №5. ${sp('Это наш дом. Я живу в квартире номер три, а моя подруга Лена живёт в квартире номер пять.')}</p>
+<p class="ru">– Здра́вствуйте, А́нна Петро́вна. Ле́на до́ма?<br>– Нет, Ма́шенька.<br>– А вы не <b>зна́ете</b>, где она́ сейча́с?<br>– В библиоте́ке.<br>– Спаси́бо, до свида́ния. ${sp('Здравствуйте, Анна Петровна. Лена дома? Нет, Машенька. А вы не знаете, где она сейчас? В библиотеке. Спасибо, до свидания.')}</p>
+${ADD('<p>«Esta es nuestra casa. Yo vivo en el apartamento n.º 3 y mi amiga Lena vive en el apartamento n.º 5.<br>– Buenos días, Anna Petrovna. ¿Lena está en casa? – No, Mashenka. – ¿Usted no sabe dónde está ahora? – En la biblioteca. – Gracias, hasta luego.»</p>','Traducción (adicional)')}</div>
+${CONJ('знать',rw(['зна́','зна́','зна́','зна́','зна́','зна́'],['ю','ешь','ет','ем','ете','ют']))}
+${EX('23','2.3 Упражне́ние.','Образе́ц: (Modelo:) <span class="mod">– Ты не зна́ешь, где сейча́с <i>Ма́ша</i>? – Наве́рное, она́ <i>в шко́ле</i>.</span><br>Людми́ла - теа́тр, Пётр Ива́нович - дере́вня, Анто́н - лес, Ю́рий - университе́т, Ната́ша и Воло́дя - дискоте́ка, Бори́с Серге́евич и Ни́на Макси́мовна - рестора́н, Рау́ль - да́ча',
+[['Людми́ла - теа́тр','она́','в театре'],['Пётр Ива́нович - дере́вня','он','в деревне'],['Анто́н - лес','он','в лесу'],['Ю́рий - университе́т','он','в университете'],['Ната́ша и Воло́дя - дискоте́ка','они́','на дискотеке'],['Бори́с Серге́евич и Ни́на Макси́мовна - рестора́н','они́','в ресторане'],['Рау́ль - да́ча','он','на даче']].map(x=>`<div class="q ru">${x[0]}:<br>– Наве́рное, ${x[1]} ${I(x[2],14)}.</div>`).join(''),
+'Respuestas sugeridas (el libro no da clave). Ojo: «в лесу» no aparece en las tablas del libro; es una forma que se estudia aparte.','p. 54')}
+<div class="box ru"><span class="pg">p. 55</span>Он <b>не зна́ет</b>, <b>кто</b> э́то.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>что</b> э́то.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>где</b> сейча́с Ни́на.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>где рабо́тает</b> Ива́н Ива́нович.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>что чита́ет</b> А́нна Петро́вна.</div>
+${ADD('<p>Igual que en español («no sabe <i>quién</i> es», «no sabe <i>dónde</i> está»), después de «не знает» sigue una pregunta indirecta: кто, что, где. El orden de las palabras no cambia.</p>')}
+${EX('24','2.4 Упражне́ние.','Образе́ц: (Modelo:) <span class="mod">мой оте́ц / <i>наш преподава́тель</i> → Мой оте́ц не зна́ет, <i>кто</i> э́то.</span><br><span class="mut">Escribe la oración completa.</span>',
+[['Ка́рлос / <i>матрёшка</i>','Карлос не знает, что это'],['вы / <i>мы живём в Москве́</i>','Вы не знаете, где мы живём'],['де́ти / <i>сейча́с их мать в магази́не</i>','Дети не знают, где сейчас их мать'],['ты / <i>он чита́ет кни́гу</i>','Ты не знаешь, что он читает'],['я / <i>де́душка гуля́ет в па́рке</i>','Я не знаю, где дедушка гуляет']].map((x,i)=>`<div class="q ru">${i+1}. ${x[0]}<br>${I(x[1],36)}</div>`).join(''),'Respuestas sugeridas. Se ignoran mayúsculas, tildes y puntuación.','p. 55')}
+<div class="box ru"><span class="pg">p. 56</span><b>И</b>: Э́то кни́га <b>и</b> журна́л. · Ива́н чита́ет, <b>и</b> Ната́ша (то́же) чита́ет.<br><b>А</b>: Э́то кни́га, <b>а</b> э́то журна́л. · Ива́н чита́ет, <b>а</b> Ни́на слу́шает му́зыку.</div>
+${ADD('<p><b>и</b> suma o junta cosas iguales («y», «también»). <b>а</b> contrasta dos cosas distintas («y», «pero», «en cambio»). Pregúntate: ¿las dos partes son iguales (и) o se oponen/comparan (а)?</p>')}
+${EX('25','2.5 Упражне́ние. И или А','',
+`<div class="pics" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">${[['⚪','бе́лый мел'],['📕','кра́сная тетра́дь'],['🖊️','чёрная ру́чка'],['📗','зелёная па́пка'],['✏️','жёлтый карандаш'],['👜','си́няя су́мка']].map(p=>`<div class="pic"><div class="em" aria-hidden="true">${p[0]}</div><span class="ru">${p[1]}</span></div>`).join('')}</div>`+
+[['Э́то мой брат, ___ э́то её брат.','а'],['Э́то ва́ша тетра́дь , ___ э́то ва́ша тетра́дь.','а'],['Мой друг живёт в Мадри́де, ___ я живу́ в Барсело́не.','а'],['Ба́бушка отдыха́ет, ___ ма́ма рабо́тает.','а'],['Плака́т виси́т на стене́, ___ ковёр лежи́т на полу́.','а'],['Я пишу́ письмо́, ___ Ната́ша пи́шет письмо́, ___ Бори́с слу́шает му́зыку.','и,а'],['Михаи́л чита́ет газе́ту, ___ Бори́с чита́ет журна́л.','а'],['Де́ти сейча́с в шко́ле, ___ их роди́тели на рабо́те.','а'],['Э́то чёрный карандаш, ___ э́то кра́сный карандаш, ___ э́то жёлтый карандаш.','а,а'],['На столе́ лежи́т зелёная па́пка, ___ в портфе́ле лежа́т бе́лая тетра́дь ___ си́няя ру́чка.','а,и']].map((x,i)=>`<div class="q ru">${i+1}. ${FS(x[0],x[1].split(','),['и','а'])}</div>`).join(''),
+'Respuestas sugeridas (el libro no da clave). En los números 9 y 10 podría haber matices; razona si las partes se oponen (а) o se suman (и).','p. 56 · Los colores: «бе́лый мел, кра́сная тетра́дь, чёрная ру́чка, зелёная па́пка, жёлтый карандаш, си́няя су́мка» son del libro')}
+${CONJ('жить',['живу́','живёшь','живёт','живём','живёте','живу́т'])}
+${EX('26','2.6 Упражне́ние.','(Relacione las columnas) <span class="mut">El ejemplo 1 ya está resuelto en el libro.</span>',
+(()=>{const o=['пи́шешь письмо́.','чита́ю газе́ту.','живёте в Петербу́рге.','отдыха́ем в дере́вне.','не рабо́тает, он на пе́нсии.','не зна́ют, где она́ сейча́с.'];return '<div class="ru">'+[['1. Я',null],['2. Мой де́душка','не работает, он на пенсии.'],['3. Её роди́тели','не знают, где она сейчас.'],['4. Ты','пишешь письмо.'],['5. Вы','живёте в Петербурге.'],['6. Мы','отдыхаем в деревне.']].map(x=>`<div class="q">${x[0]} → `+(x[1]?SEL(x[1],o):'<b>чита́ю газе́ту.</b> <span class="mut">(ejemplo)</span>')+'</div>').join('')+'</div>'})(),
+'Respuestas sugeridas. Fíjate en la terminación del verbo: я → -ю, ты → -ешь, вы → -ете, мы → -ем, они → -ют.','p. 57')}
+<div class="card"><span class="pg">p. 57</span><h3><span class="tag">Libro</span>2.7 Зада́ние. Слу́шайте и чита́йте. (Escuche y lea)</h3>
+<p class="ru">+ плюс &nbsp; 7 + 8 = 15 &nbsp;|&nbsp; 11 + 6 = 17 &nbsp;|&nbsp; 12 + 4 = 16<br>− ми́нус &nbsp; 19 − 14 = 5 &nbsp;|&nbsp; 18 − 10 = 8 &nbsp;|&nbsp; 15 − 13 = 2</p>
+<p class="mut">Voz sintética (adicional): <button class="sec" data-t="семь плюс восемь пятнадцать">7+8</button><button class="sec" data-t="одиннадцать плюс шесть семнадцать">11+6</button><button class="sec" data-t="двенадцать плюс четыре шестнадцать">12+4</button><button class="sec" data-t="девятнадцать минус четырнадцать пять">19−14</button><button class="sec" data-t="восемнадцать минус десять восемь">18−10</button><button class="sec" data-t="пятнадцать минус тринадцать два">15−13</button></p></div>
+<div class="card"><h3><span class="tag">Libro</span>2.8 Зада́ние. Слу́шайте и пиши́те. (Escuche y anote los números)<span class="pg">p. 57</span></h3>
+<p class="mut">El audio original no está incluido. Los números del libro: 11 - оди́ннадцать · 12 - двена́дцать · 13 - трина́дцать · 14 - четы́рнадцать · 15 - пятна́дцать · 16 - шестна́дцать · 17 - семна́дцать · 18 - восемна́дцать · 19 - девятна́дцать · 20 - два́дцать</p>
+<div id="numq"></div></div>
+<p class="mut">Las páginas 58 y 59 del libro (ejercicios con audio) no se incluyen en este sitio.</p>`));
+
+A.push(sec('sV','Но́вые слова́: (Nuevas palabras:)',
+`<p class="mut"><span class="tag">Libro</span>Págs. 60–61. Lista completa con las traducciones originales.</p>
+<div class="card" id="fcw"></div>
+<div class="vg">${V.map(v=>`<div class="ru"><b>${v[0]}</b> ${sp(head(v[0]))}${EM[v[0]]?' <span aria-hidden="true">'+EM[v[0]]+'</span>':''}<br><span class="mut">${v[1]}</span></div>`).join('')}</div>
+<div class="ex" id="exvq" data-id="vq"><h3><span class="tag add">Adicional</span>Práctica adicional: vocabulario</h3><div id="vqb"></div><div class="bar"><button data-act="chk">Comprobar</button><button data-act="nvq" class="sec">Nuevas preguntas</button></div><div class="res" role="status" aria-live="polite" data-exp=""></div></div>`));
+
+A.push(sec('sY','Вы уже зна́ете, как… (Ya sabe como...)',
+`<div class="orig ru"><span class="pg">p. 61</span>${[['expresar una acción en presente:','Мой оте́ц <b>рабо́тает</b>.'],['indicar el objeto al que se dirige la acción:','Де́душка чита́ет <b>газе́ту</b>.'],['pedir información a una persona:','Вы <b>не зна́ете</b>, где сейча́с Макси́м?'],['unir objetos, personas, acciones y frases análogas:','Э́то карандаш́ <b>и</b> ру́чка.<br>Я чита́ю, <b>и</b> Ната́ша чита́ет.'],['unir frases que se comparan o se confrontan mutuamente:','Я живу́ в Москве́, <b>а</b> мой брат живёт в Пари́же.'],['definir un objeto por su color:','Э́то <b>кра́сный</b> (<b>чёрный</b>...) карандаш.'],['preguntar y contestar en qué piso está:','– <b>На како́м</b> этаже́ мой но́мер?<br>– <b>На четвёртом</b> этаже́.']].map(x=>`<p class="mut" style="margin-bottom:0">…${x[0]}</p><p class="mod" style="margin:0 0 10px 24px">${x[1]}</p>`).join('')}</div>`.replace('карандаш́','каранда́ш')));
+
+A.push(sec('sG','Грамма́тика. (Gramática)',
+`<p class="mut"><span class="tag">Libro</span>Pág. 62</p>
+<h3>– Настоя́щее вре́мя глаго́лов. 1-ое спряже́ние. (Presente del verbo. 1ª conjugación)</h3>
+${CONJ('рабо́тать',rw(['рабо́та','рабо́та','рабо́та','рабо́та','рабо́та','рабо́та'],['ю','ешь','ет','ем','ете','ют']))}
+<h3>– Прямо́е дополне́ние. Вини́тельный паде́ж неодушевлённых существи́тельных. (Complemento directo. Acusativo de los sustantivos inanimados)</h3>
+<div class="box ru sw"><table><tr><td></td><td>м. р.</td><td>ж. р.</td><td>ср. р.</td></tr><tr><td>Им. п.</td><td>журна́л</td><td>газе́та</td><td>письмо́</td></tr><tr><td>Вин. п.</td><td>журна́л</td><td>газе́т<b>у</b></td><td>письмо́</td></tr></table></div>
+${ADD('<p>м. р. = masculino, ж. р. = femenino, ср. р. = neutro; Им. п. = nominativo (forma del diccionario); Вин. п. = acusativo (lo que recibe la acción). Solo cambian las palabras femeninas en -а. <b>Ejemplo adicional:</b> Я чита́ю газе́ту. = «Leo el periódico».</p>')}
+<h3>– Количественные числи́тельные. (Numerales cardinales)</h3>
+<div class="box ru two"><div>11 - оди́ннадцать<br>12 - двена́дцать<br>13 - трина́дцать<br>14 - четы́рнадцать<br>15 - пятна́дцать</div><div>16 - шестна́дцать<br>17 - семна́дцать<br>18 - восемна́дцать<br>19 - девятна́дцать<br>20 - два́дцать</div></div>
+${ADD('<p>Del 11 al 19 los números terminan en <b>-надцать</b> (como el español «-ce»: once, doce, trece…). Pulsa 🔊: '+[...Array(10)].map((_,i)=>'<button class="sec" data-t="'+['одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать','двадцать'][i]+'">'+(11+i)+'</button>').join('')+'</p>')}
+<h3>– Союз <b>И</b> (Conjunción <b>И</b>)</h3>
+<div class="box ru">Э́то карандаш <b>и</b> ру́чка.<br>Э́то Макси́м <b>и</b> Ната́ша.<br>Я чита́ю, <b>и</b> па́па (то́же) чита́ет.</div>
+<h3>– Союз <b>А</b> (Conjunción <b>А</b>)</h3>
+<div class="box ru">Я чита́ю журна́л, <b>а</b> па́па чита́ет газе́ту.<br>Я студе́нт, <b>а</b> он преподава́тель.</div>
+${ADD('<p><b>Error típico:</b> traducir siempre «pero» por <i>но</i> o «y» por <i>и</i>. En esta lección: <b>и</b> = misma idea (también); <b>а</b> = comparación o contraste, a menudo con «y» en español.</p>')}
+${EX('gq','Práctica de gramática','<span class="tag add">Adicional</span> Práctica adicional con los temas de la página 62.',
+[['Я ___ (работать).','работаю',['работаю','работает','работаешь']],['Они ___ (писать) письмо.','пишут',['пишут','пишет','пишешь']],['Ты ___ (знать), где она?','знаешь',['знаешь','знаю','знают']],['Она читает ___ (газета).','газету',['газета','газету','газете']]].map((x,i)=>`<div class="q ru">${i+1}. ${SEL(x[1],x[2]).replace('<option value="">…</option>','<option value="">…</option>')} ← ${x[0]}</div>`).join(''),'Presente y acusativo.','')}`));
+
+A.push(sec('sR','Repaso del Урок 4',
+`<div class="card"><h3>Resumen de vocabulario</h3><p class="ru">Lugares: библиоте́ка, больни́ца, гости́ница, да́ча, дискоте́ка, заво́д, лаборато́рия, магази́н, по́чта, рестора́н, университе́т, фа́брика, фи́рма, пляж, проспе́кт.<br>Verbos: де́лать, гуля́ть, жить, зна́ть, отдыха́ть, писа́ть, рабо́тать, слу́шать, чита́ть.<br>Colores: бе́лый (en ejercicios), жёлтый, зелёный, кра́сный, си́ний, чёрный.<br>Números: 11–20.</p><h3>Resumen de gramática</h3><p>Presente 1.ª conjugación (-ю, -ешь, -ет, -ем, -ете, -ют) · acusativo газета → газету · и / а · numerales 11–20 · «не знаю, кто/что/где…».</p></div>
+${EX('fin','Quiz final','Elige la respuesta correcta. Se califican todas las preguntas.',
+[['Мы ___ в Москве.','живём',['живём','живёт','живу'],'s2'],['Он ___ письмо.','пишет',['пишу','пишет','пишут'],'s1'],['Вы ___ , где она сейчас?','знаете',['знаешь','знаете','знает'],'s2'],['Я читаю журнал, ___ папа читает газету.','а',['и','а'],'sG'],['Это Максим ___ Наташа.','и',['и','а'],'sG'],['Она читает ___ .','газету',['газета','газету','газете'],'sG'],['15 =','пятнадцать',['пятнадцать','семнадцать','тринадцать'],'sG'],['17 =','семнадцать',['пятнадцать','семнадцать','шестнадцать'],'sG'],['Он работает ___ почте.','на',['в','на'],'s1'],['¿Qué significa «сейчас»?','ahora',['ahora','casa','trabajo'],'sV']].map((x,i)=>`<div class="q ru" data-q="${x[0].replace(/"/g,'')}" data-sec="${x[3]}">${i+1}. ${x[0]} ${SEL(x[1],x[2])}</div>`).join('')+'<div id="wr"></div>','','')}`));
+
+$('#app').innerHTML=A.join('');
+
+/* ---- Acciones ---- */
+function chk(ex){let ok=0,n=0;$$('[data-a]',ex).forEach(i=>{n++;const g=i.dataset.a.split('|').some(x=>norm(x)===norm(i.value));i.classList.toggle('ok',g);i.classList.toggle('bad',!g);ok+=g});
+const r=$('.res',ex);r.innerHTML=`<b>${ok}/${n}</b> ${ok==n?'✅ ¡Muy bien!':'Revisa las casillas en rojo e inténtalo de nuevo.'} <span class="mut">${r.dataset.exp}</span>`;
+const id=ex.dataset.id;S.sc[id]=[ok,n];ok==n?delete S.bad[id]:S.bad[id]=1;save();prog();
+if(id=='fin'){const w=$$('.q',ex).filter(q=>!q.querySelector('select').classList.contains('ok'));$('#wr').innerHTML=w.length?'<b>Preguntas incorrectas:</b><ul>'+w.map(q=>`<li>${q.dataset.q} → <a href="#${q.dataset.sec}">repasar</a></li>`).join('')+'</ul>':'🎉 ¡Todas correctas!'}}
+function shw(ex){$$('[data-a]',ex).forEach(i=>{i.value=i.dataset.a.split('|')[0];i.classList.add('ok');i.classList.remove('bad')});$('.res',ex).innerHTML='Respuesta sugerida mostrada. '+$('.res',ex).dataset.exp;S.bad[ex.dataset.id]=1;save()}
+function rst(ex){$$('[data-a]',ex).forEach(i=>{i.value='';i.classList.remove('ok','bad')});$('.res',ex).textContent='';delete S.sc[ex.dataset.id];save();prog()}
+function prog(){const t=$$('.ex[data-id]').length,d=Object.keys(S.sc).length;$('#pgb').style.width=Math.min(100,100*d/t)+'%';$('#pg').title=d+' de '+t+' ejercicios comprobados'}
+let fi=0,fo=false;
+function fc(){$('#fcw').innerHTML=`<p class="mut"><span class="tag add">Adicional</span>Tarjeta ${fi+1} de ${V.length}</p><div class="fc" tabindex="0" role="button" data-act="flip" aria-label="Mostrar u ocultar traducción"><div class="w ru">${EM[V[fi][0]]||'🔤'} ${V[fi][0]}</div><div class="mut" style="font-size:1.2rem">${fo?V[fi][1]:'Toca para ver la traducción'}</div></div><button data-act="prev" class="sec">← Anterior</button><button data-act="flip">${fo?'Ocultar':'Mostrar'} traducción</button><button data-act="next" class="sec">Siguiente →</button>${sp(head(V[fi][0]))}`}
+function vq(){const p=[...V].sort(()=>Math.random()-.5).slice(0,5);$('#vqb').innerHTML=p.map((v,i)=>{const o=[v[1],...V.filter(x=>x!=v).sort(()=>Math.random()-.5).slice(0,3).map(x=>x[1])].sort(()=>Math.random()-.5);return `<div class="q ru">${i+1}. ¿Qué significa <b>${head(v[0])}</b>? ${SEL(v[1],o)}</div>`}).join('');$('#exvq .res').textContent='';delete S.sc.vq}
+const NW=['','один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать','двадцать'];
+let nn=0;function nq(){nn=1+Math.floor(Math.random()*20);$('#numq').innerHTML=`<p><span class="tag add">Adicional</span> Práctica con números: escucha y escribe la cifra. <button data-act="np">🔊 Escuchar número</button> <input id="nin" size="4" inputmode="numeric" aria-label="Número"> <button data-act="nc" class="sec">Comprobar</button> <span id="nr" role="status"></span></p>`}
+document.addEventListener('click',e=>{const b=e.target.closest('button,.fc');if(!b)return;const a=b.dataset.act;
+if(b.dataset.t&&!a)return speak(b.dataset.t);
+if(b.classList.contains('sp'))return speak(b.dataset.t);
+const ex=b.closest('.ex[data-id]');
+if(a=='chk')chk(ex);else if(a=='show')shw(ex);else if(a=='rst')rst(ex);else if(a=='nvq')vq();
+else if(a=='cap'){const d=b.nextElementSibling;d.hidden=!d.hidden;b.textContent=d.hidden?'Ver respuesta del libro':'Ocultar'}
+else if(a=='flip'){fo=!fo;fc()}else if(a=='next'){fi=(fi+1)%V.length;fo=false;fc()}else if(a=='prev'){fi=(fi+V.length-1)%V.length;fo=false;fc()}
+else if(a=='np'){if(!nn)nn=1;speak(NW[nn])}
+else if(a=='nc'){const v=+$('#nin').value;$('#nr').textContent=v==nn?'✅ Correcto: '+nn+' = '+NW[nn]:'❌ Era '+nn+' ('+NW[nn]+'). Escucha otra vez.';if(v==nn){nq()}}});
+document.addEventListener('keydown',e=>{if((e.key=='Enter'||e.key==' ')&&e.target.classList.contains('fc')){e.preventDefault();fo=!fo;fc()}});
+fc();vq();nq();prog();
+</script></body></html>
